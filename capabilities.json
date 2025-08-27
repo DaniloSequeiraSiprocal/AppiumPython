@@ -1,0 +1,20 @@
+{
+  "android_default": {
+    "platformName": "Android",
+    "appium:automationName": "UiAutomator2",
+    "appium:platformVersion": "15",
+    "appium:deviceName": "Pixel_7",
+    "appium:javaHome": "C:\\Program Files\\Microsoft\\jdk-11.0.27.6-hotspot",
+    "appium:appPackage": "amazonia.iu.com",
+    "appium:appActivity": "amazonia.iu.com.MainActivity",
+    "appium:noReset": false,
+    "appium:autoGrantPermissions": true,
+    "appium:uiautomator2ServerLaunchTimeout": 60000,
+    "appium:uiautomator2ServerInstallTimeout": 60000,
+    "appium:adbExecTimeout": 60000,
+    "appium:ensureWebviewsHavePages": true,
+    "appium:nativeWebScreenshot": true,
+    "appium:newCommandTimeout": 300,
+    "appium:allowInsecure": ["adb_shell"]
+  }
+}

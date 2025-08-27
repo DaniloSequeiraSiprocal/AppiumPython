@@ -1,39 +1,16 @@
-import os
 import unittest
 import time
-import re
 from appium import webdriver
-from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
-from selenium.common.exceptions import (
-    InvalidElementStateException,
-    WebDriverException,
-    NoSuchElementException
-)
+from selenium.common.exceptions import (NoSuchElementException)
 from selenium.webdriver.common.by import By
+
+from capabilities_loader import load_capabilities
 
 
 class SDKTests(unittest.TestCase):
     def setUp(self):
-        self.caps = {
-            "platformName": "Android",
-            "appium:automationName": "UiAutomator2",
-            "appium:platformVersion": "13",
-            "appium:deviceName": "M2012K10C",
-            "appium:javaHome": "C:\\Program Files\\Microsoft\\jdk-11.0.27.6-hotspot",
-            "appium:appPackage": "amazonia.iu.com",
-            "appium:appActivity": "amazonia.iu.com.MainActivity",
-            "appium:noReset": False,
-            "appium:autoGrantPermissions": True,
-            "appium:uiautomator2ServerLaunchTimeout": 60000,
-            "appium:uiautomator2ServerInstallTimeout": 60000,
-            "appium:adbExecTimeout": 60000,
-            "appium:ensureWebviewsHavePages": True,
-            "appium:nativeWebScreenshot": True,
-            "appium:newCommandTimeout": 300
-        }
-
-
+        self.caps = load_capabilities()
 
         try:
             options = UiAutomator2Options().load_capabilities(self.caps)

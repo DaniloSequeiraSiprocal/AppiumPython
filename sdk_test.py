@@ -1,42 +1,33 @@
 import os
 import unittest
 import time  # Importación esencial
+
+import options
+import self
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
 from selenium.common.exceptions import (InvalidElementStateException,
                                         WebDriverException,
                                         NoSuchElementException)
-
+from capabilities_loader import load_capabilities
 
 class SDKTests(unittest.TestCase):
     def setUp(self):
-        # Configuración de capacidades
-        self.caps = {
-            "platformName": "Android",
-            "appium:automationName": "UiAutomator2",
-            "appium:platformVersion": "12",
-            "appium:deviceName": "Pixel_4",
-            "appium:appPackage": "amazonia.iu.com",
-            "appium:appActivity": "amazonia.iu.com.MainActivity",
-            "appium:noReset": False,
-            "appium:autoGrantPermissions": True,
-            "appium:uiautomator2ServerLaunchTimeout": 60000,
-            "appium:uiautomator2ServerInstallTimeout": 60000,
-            "appium:adbExecTimeout": 60000
-        }
+        self.caps = load_capabilities()
 
-        # Inicialización del driver
-        self.driver = None
         try:
-            options = UiAutomator2Options().load_capabilities(self.caps)
+            options = UiAutomator2Options()
+            options.load_capabilities(self.caps)
+
             self.driver = webdriver.Remote(
-                command_executor="http://localhost:4723",
+                command_executor="http://localhost:4723",  # Asegúrate del path
                 options=options
             )
             self.driver.implicitly_wait(10)
         except Exception as e:
-            self.fail(f"Error al inicializar el driver: {str(e)}")
+            raise RuntimeError(f"Error al inicializar el driver: {e}")
+
 
     def get_sdk_status(self):
         """Consulta el estado del SDK usando el método GET_STATUS"""

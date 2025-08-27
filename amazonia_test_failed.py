@@ -6,29 +6,13 @@ from appium.options.android import UiAutomator2Options
 from time import sleep
 import random
 from selenium.common.exceptions import (InvalidElementStateException,
-                                        WebDriverException,
-                                        NoSuchElementException)
-
+                                        WebDriverException)
+from capabilities_loader import load_capabilities
 
 class SDKTests(unittest.TestCase):
     def setUp(self):
         # Configuración mejorada de capacidades
-        self.caps = {
-            "platformName": "Android",
-            "appium:automationName": "UiAutomator2",
-            "appium:platformVersion": "12",
-            "appium:deviceName": "Pixel_4",
-            "appium:appPackage": "amazonia.iu.com",
-            "appium:appActivity": "amazonia.iu.com.MainActivity",
-            "appium:noReset": False,
-            "appium:autoGrantPermissions": True,
-            "appium:uiautomator2ServerLaunchTimeout": 60000,
-            "appium:uiautomator2ServerInstallTimeout": 60000,
-            "appium:adbExecTimeout": 60000,
-            "appium:ensureWebviewsHavePages": True,
-            "appium:nativeWebScreenshot": True,
-            "appium:newCommandTimeout": 300
-        }
+        self.caps = load_capabilities()
 
         # Inicialización más robusta del driver
         self.driver = None
