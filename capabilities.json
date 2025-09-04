@@ -2,10 +2,10 @@
   "android_default": {
     "platformName": "Android",
     "appium:automationName": "UiAutomator2",
-    "appium:platformVersion": "15",
-    "appium:deviceName": "Pixel_7",
+    "appium:platformVersion": "8.1.0",
+    "appium:deviceName": "AZUMI V4",
     "appium:javaHome": "C:\\Program Files\\Microsoft\\jdk-11.0.27.6-hotspot",
-    "appium:appPackage": "amazonia.iu.com",
+    "appium:appPackage": "com.digitalreef.DigitalReefDevApp",
     "appium:appActivity": "amazonia.iu.com.MainActivity",
     "appium:noReset": false,
     "appium:autoGrantPermissions": true,
